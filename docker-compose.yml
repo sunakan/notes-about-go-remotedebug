@@ -3,11 +3,11 @@
 version: "3.7"
 
 services:
-  app:
+  go:
     command: realize start --run
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/go/Dockerfile
       target: build
       args:
         - GO_VERSION_TAG=${GO_VERSION_TAG}
@@ -20,3 +20,11 @@ services:
       - apparmor:unconfined
     cap_add:
       - SYS_PTRACE
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    ports:
+      - 80:80
+    environment:
+      - BACKEND_HOST=go:8888

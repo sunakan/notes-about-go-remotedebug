@@ -12,3 +12,6 @@ down:
 
 curl:
 	curl http://localhost:8888
+
+config:
+	docker-compose config
