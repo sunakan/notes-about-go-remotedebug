@@ -16,3 +16,7 @@ services:
       - 2345:2345
     volumes:
       - ./:/go/app
+    security_opt:
+      - apparmor:unconfined
+    cap_add:
+      - SYS_PTRACE
