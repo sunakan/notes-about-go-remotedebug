@@ -4,9 +4,15 @@ version: "3.7"
 
 services:
   app:
+    command: realize start --run
     build:
       context: .
       dockerfile: Dockerfile
       target: build
       args:
         - GO_VERSION_TAG=${GO_VERSION_TAG}
+    ports:
+      - 8888:8888
+      - 2345:2345
+    volumes:
+      - ./:/go/app
