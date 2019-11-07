@@ -12,17 +12,15 @@ RUN go get -u github.com/go-delve/delve/cmd/dlv
 RUN go build -o /go/bin/dlv github.com/go-delve/delve/cmd/dlv
 
 COPY . .
-RUN go build -o hello.go
+RUN go build -o hello
+
+
 
 FROM alpine:3.10
-
 WORKDIR /app
-
 #COPY --from=build /go/app/portfolio-backend .
-
 RUN set -x
 RUN addgroup go
 RUN adduser -D -G go go
 #RUN chown -R go:go /app/portfolio-backend
-
 #CMD ["./portfolio-backend"]

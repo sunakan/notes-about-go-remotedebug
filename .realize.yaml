@@ -14,7 +14,7 @@ schema:
       method: /go/bin/dlv
   args:
     - exec
-    - ./portfolio-backend
+    - ./hello
     - --headless=true
     - --listen=:2345
     - --api-version=2
